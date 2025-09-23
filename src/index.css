@@ -1,0 +1,208 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow&family=Borel&family=Hahmlet:wght@200&family=Inder&family=Josefin+Sans:wght@300&family=Jost&family=Kalnia:wght@100;400&family=Mukta&family=Nunito&family=PT+Sans&family=Play&family=Playpen+Sans&family=Poor+Story&family=Public+Sans:wght@300&family=Rubik+Scribble&family=Signika+Negative&family=Ubuntu:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+ 
+.active{
+    color:rgb(232, 21, 71);
+     
+}
+@keyframes borderSpin {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-border-spin {
+  background-size: 300% 300%;
+  animation: borderSpin 4s linear infinite;
+}
+
+
+@Layer components {
+    .resumeLi{
+        @apply w-full h-14 md:h-20 text-center bg-black bg-opacity-25 md:text-xl text-gray-300 flex justify-center border
+        cursor-pointer hover:bg-opacity-40 duration-300 items-center rounded-none
+    }
+    .bannerIcon{
+        @apply w-8 h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 bg-black bg-opacity-25 text-gray-200 text-xl inline-flex
+        items-center justify-center rounded-md shadow-shadowOne hover:bg-opacity-40 
+        transition-all hover:text-designColor cursor-pointer duration-300 
+    }
+    .bgOpacity {
+        @apply bg-black bg-opacity-40
+    }
+
+    .contactInput{
+        @apply w-full h-10 rounded-lg border-2 border-b-gray-600 bg-[#191b1e]
+        text-lightText focus-visible:border-b-transparent duration-300 focus-visible:outline-designColor
+        outline-none px-4 active:outline-none
+    }
+    .textareaInput{
+        @apply w-full rounded-lg border-b-[1px] border-b-gray-600 bg-[#191b1e] text-lightText
+        px-4 py-2 active:outline-none focus-visible:outline-designColor outline-none 
+        focus-visible:border-b-transparent duration-300 resize-none
+    }
+}
+
+
+
+/* Animated Gradient Border */
+.popup-border {
+  background: linear-gradient(90deg, #06b6d4, #3b82f6, #ec4899, #f43f5e);
+  background-size: 400% 400%;
+  animation: gradientAnim 8s ease infinite;
+  border-radius: 14px;
+}
+
+@keyframes gradientAnim {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+
+/* From Uiverse.io by MuhammadHasann */ 
+.nav-button {
+  --black-700: #1A1D20;
+  --border_radius: 10px;
+  --transtion: 0.3s ease-in-out;
+  --offset: 2px;
+
+  cursor: pointer;
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  
+
+  transform-origin: center;
+
+  
+  background-color: transparent;
+  
+  border: none;
+  border-radius: var(--border_radius);
+  transform: scale(calc(1 + (var(--active, 0) * 0.1)));
+
+  transition: transform var(--transtion);
+}
+
+.nav-button::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
+  width: 100%;
+  height: 100%;
+  background-color: var(--black-700);
+
+  border-radius: var(--border_radius);
+  
+  transition: all var(--transtion);
+  z-index: 0;
+}
+
+.nav-button::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  
+  background-position: top;
+
+  opacity: var(--active, 0);
+  border-radius: var(--border_radius);
+  transition: opacity var(--transtion);
+  //z-index: 2;
+}
+
+.nav-button:is(:hover, :focus-visible) {
+  --active: 1;
+}
+.nav-button:active {
+  transform: scale(1);
+}
+
+.nav-button .dots_border {
+  --size_border: calc(100% + 2px);
+
+  overflow: hidden;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: var(--size_border);
+  height: var(--size_border);
+  background-color: transparent;
+
+  border-radius: var(--border_radius);
+  z-index: -10;
+}
+
+.nav-button .dots_border::before {
+  content: "";
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transform-origin: left;
+  transform: rotate(0deg);
+
+  width: 100%;
+  height: 2rem;
+  background-color: red;
+  
+  mask: linear-gradient(transparent 0%, red 120%);
+  animation: rotate 2s linear infinite;
+}
+
+@keyframes rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+ 
+
+ 
+.nav-button .text_button {
+  position: relative;
+  z-index: 10;
+
+  background-image: linear-gradient(
+    90deg,
+    hsla(0 0% 100% / 1) 0%,
+    hsla(0 0% 100% / var(--active, 0)) 120%
+  );
+  background-clip: text;
+
+  font-size: 1rem;
+  color: transparent;
+}
+
+
+.scrollbar-hidden {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* IE & Edge */
+}
+
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
