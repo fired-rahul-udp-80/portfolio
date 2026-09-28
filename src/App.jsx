@@ -11,11 +11,14 @@ import Contact from "./components/contact/Contact";
 import Footer from "./components/footer/Footer";
 import Popup from "./components/banner/Popup";
 import { useState } from "react";
+import { AnimatePresence } from "framer-motion";
 import { featureCardData } from "./constants/index";
 import About from "./components/aboutme/About";
 import ActionPopup from "./components/ActionPopup";
+import { GridBackground, CursorHoverEffect, PageLoader } from "./components/common";
 
 function App() {
+  const [isLoading, setIsLoading] = useState(true);
   const [popUp, setPopUp] = useState(null);
   const closePopup = () => setPopUp(null);
   const [actionClosePopup, setActionClosePopup] = useState(false);
@@ -30,9 +33,15 @@ function App() {
   const cardData = featureCardData.find((card) => card.id === popUp);
   return (
     <>
-      <div className="w-full bg-bodyColor text-lightText">
+      <AnimatePresence mode="wait">
+        {isLoading && <PageLoader onComplete={() => setIsLoading(false)} />}
+      </AnimatePresence>
+
+      <div className="w-full min-h-screen relative text-lightText selection:bg-designColor selection:text-white">
+        <CursorHoverEffect />
+        <GridBackground />
         <Navbar setActionClosePopup={setActionClosePopup} />
-        <div className="max-w-sreen-2xl mx-auto px-6 md:px-16 relative">
+        <div className="max-w-sreen-2xl mx-auto px-6 md:px-16 relative z-10">
           <Banner />
           <About />
           <Features popUp={popUp} setPopUp={setPopUp} />
@@ -48,6 +57,7 @@ function App() {
         <Footer />
         
       </div>
+      <AnimatePresence>
       {cardData && (
         <Popup
           closepopup={closePopup}
@@ -56,20 +66,19 @@ function App() {
           desc2={cardData.desc2}
         />
       )}
+      </AnimatePresence>
 
       {videoPopup && (
         <div>
           <Popup image={details} closepopup={closepopup} popToggle={popToggle} />
         </div>
       )}
-      {
-        actionClosePopup && (
-          <div>
-            <ActionPopup  setActionClosePopup={setActionClosePopup}/>
-          </div>
-        )
-      }
 
+      <AnimatePresence>
+        {actionClosePopup && (
+          <ActionPopup setActionClosePopup={setActionClosePopup} />
+        )}
+      </AnimatePresence>
     </>
   );
 }

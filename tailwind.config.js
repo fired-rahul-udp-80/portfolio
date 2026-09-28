@@ -13,7 +13,7 @@ export default {
       colors:{
         bodyColor : "#212428",
         lightText : "#c4cfde",
-        boxBg : "linear-gradient(145deg, #le2024, #23272b)",
+        boxBg : "linear-gradient(145deg, #1e2024, #23272b)",
         designColor: "#ff014f",
       },
       boxShadow:{

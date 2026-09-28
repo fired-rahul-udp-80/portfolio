@@ -1,0 +1,31 @@
+/* 3D Cursor Tilt & Scroll Depth Effect - Non-blocking */
+.cursor-scroll-effect {
+  display: block;
+  width: 100%;
+  position: relative;
+}
+
+.cursor-scroll-effect__content {
+  transform: perspective(1000px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg));
+  transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.cursor-scroll-effect.cursor-scroll-effect--active .cursor-scroll-effect__content {
+  transition: transform 0.08s ease-out;
+}
+
+/* Ensure buttons, links, inputs, and interactive elements always receive pointer events with top stacking */
+.cursor-scroll-effect button,
+.cursor-scroll-effect a,
+.cursor-scroll-effect input,
+.cursor-scroll-effect textarea,
+.cursor-scroll-effect select,
+.cursor-scroll-effect [role="button"],
+.cursor-scroll-effect .cursor-pointer {
+  position: relative;
+  z-index: 30;
+  pointer-events: auto !important;
+}

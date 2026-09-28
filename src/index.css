@@ -127,8 +127,7 @@
 
   opacity: var(--active, 0);
   border-radius: var(--border_radius);
-  transition: opacity var(--transtion);
-  //z-index: 2;
+  /* z-index: 2; */
 }
 
 .nav-button:is(:hover, :focus-visible) {
@@ -205,4 +204,46 @@
 
 .scrollbar-hidden::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Opera */
+}
+
+/* Two-Row Infinite Marquee Scrolling */
+@keyframes marqueeLeft {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marqueeRight {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+.animate-marquee-left {
+  display: flex;
+  width: max-content;
+  animation: marqueeLeft 45s linear infinite;
+  will-change: transform;
+}
+
+.animate-marquee-right {
+  display: flex;
+  width: max-content;
+  animation: marqueeRight 45s linear infinite;
+  will-change: transform;
+}
+
+.pause-on-hover:hover {
+  animation-play-state: paused !important;
+}
+
+.pause-group:hover .animate-marquee-left,
+.pause-group:hover .animate-marquee-right {
+  animation-play-state: paused !important;
 }

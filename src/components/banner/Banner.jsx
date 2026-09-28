@@ -182,15 +182,7 @@ const Banner = () => {
               </Link>
             </div>
           </div>
-          <div className="z-0  w-full h-full opacity-20 group overflow-hidden duration-1000 hover:duration-1000 rounded-xl">
-            <div className="bg-transparent group-hover:scale-150 -bottom-[300px] left-[130px] absolute shadow-yellow-800 shadow-inner rounded-full transition-all ease-in-out group-hover:duration-1000 duration-1000 w-[600px] h-[600px]"></div>
-            <div className="bg-transparent group-hover:scale-150 -bottom-[330px] left-[100px] absolute shadow-red-800 shadow-inner rounded-full transition-all ease-in-out group-hover:duration-1000 duration-1000 w-[650px] h-[650px]"></div>
-            <div className="bg-transparent group-hover:scale-150 -bottom-[355px] left-[80px] absolute shadow-sky-800 shadow-inner rounded-full transition-all ease-in-out group-hover:duration-1000 duration-1000 w-[700px] h-[700px]"></div>
-            <div className="bg-transparent group-hover:scale-150 top-12 right-12 absolute shadow-red-800 shadow-inner rounded-full transition-all ease-in-out group-hover:duration-1000 duration-1000 w-20 h-20"></div>
-            <div className="bg-transparent group-hover:scale-150 -bottom-[250px] left-[170px] absolute shadow-green-800 shadow-inner rounded-full transition-all ease-in-out group-hover:duration-1000 duration-1000 w-[520px] h-[520px]"></div>
-            <div className="bg-transparent group-hover:scale-150 top-6 -right-16 absolute shadow-sky-800 shadow-inner rounded-full transition-all ease-in-out group-hover:duration-1000 duration-1000 w-72 h-72"></div>
-            <div className="bg-transparent group-hover:scale-150 top-6 right-[100px] absolute shadow-sky-500 shadow-inner rounded-full transition-all ease-in-out group-hover:duration-1000 duration-1000 w-6 h-6"></div>
-          </div>
+           
         </div>
       </div>
 
@@ -207,7 +199,7 @@ const Banner = () => {
           />
         </div>
         <div
-          className="  z-20 absolute top-[97%] left-[5%] -translate-y-[90%] -translate-x-[10%] bg-blue-100 w-[50%] h-[30%]
+          className="  z-20 absolute top-[97%] -right-[5%] -translate-y-[90%] -translate-x-[10%] bg-blue-100 w-[50%] h-[30%]
              rounded-md flex flex-col justify-between items-center py-2"
         >
           <p className="text-gray-900 text-xs md:text-lg font-titleFont font-semibold ">

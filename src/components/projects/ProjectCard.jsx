@@ -1,84 +1,98 @@
 import React from "react";
 import { FiExternalLink } from "react-icons/fi";
 import { VscOpenPreview } from "react-icons/vsc";
-   
+import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router";
+import { CursorScrollEffect } from "../common";
 
-const ProjectCard = ({ id, image, liveUrl, title, des, src, setDetails, setVideoPopup, setPopToggle }) => {
- 
-
-  const openPopup = (id) => {
+const ProjectCard = ({
+  id,
+  image,
+  liveUrl,
+  title,
+  des,
+  src,
+  category = "Full Stack Development",
+  setDetails,
+  setVideoPopup,
+  setPopToggle,
+}) => {
+  const openPopup = (e) => {
+    if (e) e.stopPropagation();
     setVideoPopup(id);
     setPopToggle(true);
-     
-    setDetails([title,image,des]);
+    setDetails([title, image, des]);
   };
 
- 
-
   return (
-    <div
-      key={id}
-      className="w-full py-6 rounded-2xl shadow-xl relative
-      group bg-gradient-to-b from-gray-900 to-black
-      transition-all duration-700 backdrop-blur-md border border-gray-800
-      hover:shadow-2xl hover:shadow-designColor/10 transform hover:-translate-y-2"
-    >
-      {/* Image Section */}
-      <div className="w-full px-6 overflow-hidden rounded-xl   flex justify-center items-center">
-        <img
-          className="w-[85%] h-full  object-contain group-hover:scale-110 duration-500 cursor-pointer"
-          src={src}
-          alt={title}
-        />
-      </div>
+    <CursorScrollEffect className="w-[340px] sm:w-[390px] md:w-[420px] shrink-0">
+      <div
+        onClick={openPopup}
+        className="w-full h-full p-5 md:p-6 rounded-2xl
+          bg-[#11141c]/95 border border-white/10 hover:border-designColor/70
+          transition-all duration-300 flex flex-col justify-between cursor-pointer select-none group"
+      >
+        {/* Top Header: Avatar/Thumbnail + Title + Live Link */}
+      <div>
+        <div className="flex items-center justify-between gap-3 mb-3">
+          <div className="flex items-center gap-3 min-w-0">
+            {/* Project Thumbnail / Icon */}
+            <div className="w-12 h-12 rounded-xl overflow-hidden border border-white/15 bg-black/50 shrink-0 flex items-center justify-center p-1 group-hover:border-designColor/50 transition-colors">
+              <img
+                src={src}
+                alt={title}
+                className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300"
+              />
+            </div>
 
-      {/* Content Section */}
-      <div className="w-full mt-2 font-bodyFont px-4">
-        <div className="flex gap-3">
-          {/* External Icon */}
-          <span
-            className="text-lg w-10 h-10 rounded-full bg-black/60 border border-gray-700
-              inline-flex justify-center items-center text-gray-400 hover:text-designColor 
-              hover:scale-110 transition-all duration-300 cursor-pointer"
-          >
-            <Link to={liveUrl} target="_blank">
-              <FiExternalLink />
+            {/* Title & Category */}
+            <div className="min-w-0">
+              <h3 className="text-base md:text-lg font-bold text-white group-hover:text-designColor transition-colors truncate">
+                {title}
+              </h3>
+              <p className="text-xs text-gray-400 font-mono truncate">
+                {category}
+              </p>
+            </div>
+          </div>
+
+          {/* External Link */}
+          {liveUrl && (
+            <Link
+              to={liveUrl}
+              target="_blank"
+              onClick={(e) => e.stopPropagation()}
+              title="Open Live Project"
+              className="w-9 h-9 rounded-full bg-white/[0.04] border border-white/15 flex items-center justify-center text-gray-400 hover:text-white hover:bg-designColor hover:border-designColor transition-all duration-300 shrink-0 cursor-pointer"
+            >
+              <FiExternalLink className="w-4 h-4" />
             </Link>
-          </span>
-
-          {/* Preview Icon */}
-          <span
-            onClick={() => openPopup(id)}
-            className="text-lg w-10 h-10 rounded-full bg-black/60 border border-gray-700
-              inline-flex justify-center items-center text-gray-400 hover:text-designColor 
-              hover:scale-110 transition-all duration-300 cursor-pointer"
-          >
-            <VscOpenPreview />
-          </span>
+          )}
         </div>
-        <h3 className="text-designColor text-md md:text-lg font-semibold tracking-wide">
-          {title}
-        </h3>
 
-        {/* Description */}
-        <p
-          className="text-sm mb-4 leading-relaxed mt-4 text-gray-300 group-hover:text-gray-100 
-        transition-colors duration-300 text-justify"
-        >
-          {des.substring(0, 65) + "..."} <button onClick={() => openPopup(id)} >more</button>
+        {/* Project Description (Clamped text matching reference image) */}
+        <p className="text-sm text-gray-400 leading-relaxed text-justify line-clamp-3 mt-2 font-bodyFont group-hover:text-gray-300 transition-colors">
+          {des}
         </p>
-        <a
-          href="tel:+9199607457"
-          className="py-2 px-8 border border-red-700 text-red-700 rounded-xl
-            text-xs hover:bg-red-700 hover:text-white transition-colors duration-300 shadow-md"
-        >
-          Book Now
-        </a>
       </div>
 
-      
+      {/* Bottom Footer: Clickable View Details / Read More */}
+      <div className="pt-4 mt-4 border-t border-white/10 flex items-center justify-between">
+        <button
+          type="button"
+          onClick={openPopup}
+          className="relative z-20 inline-flex items-center gap-1.5 text-xs md:text-sm font-semibold text-designColor hover:text-white transition-colors cursor-pointer group/btn pointer-events-auto"
+        >
+          <span>View Details</span>
+          <ArrowUpRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
+        </button>
+
+        <span className="text-[11px] font-mono text-gray-500">
+          Click to expand
+        </span>
+      </div>
     </div>
+    </CursorScrollEffect>
   );
 };
 

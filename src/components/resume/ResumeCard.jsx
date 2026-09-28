@@ -1,32 +1,71 @@
-import React from 'react'
+import React from "react";
+import { Award, Calendar, CheckCircle2 } from "lucide-react";
+import { CursorScrollEffect } from "../common";
 
-const ResumeCard = ({title,subTitle,result,des}) => {
+const ResumeCard = ({ title, subTitle, result, des, tags = [] }) => {
   return (
-    <div className="w-full h-1/3 group flex">
-         <div className="w-10 h-[6px] mt-16 bgOpacity  relative">
-            <span className="absolute w-5 h-5 rounded-full -top-2 -left-3 flex justify-center
-            items-center bg-black bg-opacity-60">
-                <span class="w-3 h-3 rounded-full bg-bodyColor inline-flex group-hover:bg-designColor duration-300"></span>
-            </span>
-            
-         </div>
-         <div className="w-full bg-black bg-opacity-20 hover:bg-opacity-30 duration-300
-         rounded-lg px-10 py-5 flex flex-col justify-center gap-10 shadow-shadowOne">
-            <div className="flex justify-between items-center">
-                <div>
-                    <h3 className="text-2xl font-semibold group-hover:text-white duration-300">{title}</h3>
-                    <p className="text-sm mt-2 text-gray-400 group-hover:text-white duration-300">{subTitle}</p>
-                </div>
-                <div>
-                    <p className="px-4 h-10 text-designColor bg-black bg-opacity-25 rounded-lg
-                    flex justify-center items-center shadow-shadowOne text-sm font-medium">{result}</p>
-                </div>
-            </div>
-            <p className="text-base text-justify font-medium text-gray-400 group-hover:text-gray-300">{des}</p>
-             
-         </div>
-    </div>
-  )
-}
+    <div className="w-full group flex items-start gap-4 md:gap-6">
+      {/* Timeline Node & Connector Line */}
+      <div className="w-8 md:w-10 flex flex-col items-center shrink-0 pt-6 relative">
+        {/* Glow Node Indicator */}
+        <div className="w-5 h-5 rounded-full border-2 border-white/20 bg-[#161922] flex items-center justify-center group-hover:border-designColor group-hover:ring-4 group-hover:ring-designColor/20 group-hover:scale-110 transition-all duration-300 shadow-[0_0_10px_rgba(0,0,0,0.5)]">
+          <span className="w-2 h-2 rounded-full bg-gray-500 group-hover:bg-designColor transition-colors duration-300" />
+        </div>
+        {/* Connector arm linking into the card */}
+        <div className="w-full h-[2px] mt-[-10px] ml-5 bg-gradient-to-r from-white/10 to-transparent group-hover:from-designColor/60 transition-colors duration-300" />
+      </div>
 
-export default ResumeCard
+      {/* Main Resume Card Container */}
+      <CursorScrollEffect className="w-full">
+        <div className="w-full relative overflow-hidden bg-gradient-to-br from-[#161922]/95 to-[#10121a]/95 border border-white/10 p-6 md:p-8 backdrop-blur-md transition-all duration-300 flex flex-col justify-between gap-4">
+          {/* Ambient Corner Glow on Hover */}
+          <div className="absolute -top-16 -right-16 w-36 h-36 bg-designColor/0 rounded-full blur-3xl transition-all duration-500 pointer-events-none" />
+
+        {/* Card Header */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-white/5 pb-4">
+          <div className="space-y-1">
+            <h3 className="text-lg md:text-xl font-bold text-gray-100 group-hover:text-designColor transition-colors duration-300 font-titleFont tracking-wide">
+              {title}
+            </h3>
+            <p className="text-xs md:text-sm text-gray-400 group-hover:text-gray-300 transition-colors duration-300 font-mono flex items-center gap-1.5">
+              <Calendar className="w-3.5 h-3.5 text-designColor shrink-0" />
+              <span>{subTitle}</span>
+            </p>
+          </div>
+
+          {/* Result / Grade / Badge */}
+          {result && (
+            <div className="self-start sm:self-auto shrink-0">
+              <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs md:text-sm font-semibold font-mono text-designColor bg-designColor/10 border border-designColor/30 shadow-[0_0_12px_rgba(255,1,79,0.15)]">
+                <Award className="w-3.5 h-3.5 text-designColor" />
+                {result}
+              </span>
+            </div>
+          )}
+        </div>
+
+        {/* Description */}
+        <p className="text-sm md:text-base text-gray-400 group-hover:text-gray-300 font-bodyFont leading-relaxed text-justify transition-colors duration-300">
+          {des}
+        </p>
+
+        {/* Optional Tag Pills */}
+        {tags && tags.length > 0 && (
+          <div className="flex flex-wrap gap-2 pt-2 border-t border-white/5">
+            {tags.map((tag, idx) => (
+              <span
+                key={idx}
+                className="text-[11px] md:text-xs font-mono px-2.5 py-1 rounded-md bg-white/[0.04] text-gray-300 border border-white/10 group-hover:border-designColor/30 transition-colors"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+        )}
+      </div>
+    </CursorScrollEffect>
+  </div>
+  );
+};
+
+export default ResumeCard;

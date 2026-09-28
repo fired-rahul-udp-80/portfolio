@@ -1,15 +1,32 @@
 import React, { useState } from "react";
 import { featureCardData } from "../../constants";
 import Title from "../layouts/Title";
- 
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import {
+  ChevronLeft,
+  ChevronRight,
+  Code,
+  Server,
+  Palette,
+  Database,
+  Globe,
+  Layers,
+  ArrowUpRight,
+} from "lucide-react";
+import { CursorScrollEffect } from "../common";
 
-const Features = ({setPopUp}) => {
+const featureIcons = {
+  "1001": <Code className="w-6 h-6" />,
+  "1002": <Server className="w-6 h-6" />,
+  "1003": <Palette className="w-6 h-6" />,
+  "1004": <Database className="w-6 h-6" />,
+  "1005": <Globe className="w-6 h-6" />,
+  "1006": <Layers className="w-6 h-6" />,
+};
 
+const Features = ({ setPopUp }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const openPopup = (id) => setPopUp(id);
- 
 
   // Slider Controls
   const prevSlide = () => {
@@ -31,7 +48,7 @@ const Features = ({setPopUp}) => {
       <Title title="Services" des="What I Do" />
 
       {/* Slider Container */}
-      <div className="relative overflow-hidden">
+      <div className="relative overflow-hidden py-4">
         <div
           className="flex transition-transform duration-700 ease-in-out"
           style={{ transform: `translateX(-${currentIndex * 100}%)` }}
@@ -39,60 +56,93 @@ const Features = ({setPopUp}) => {
           {featureCardData.map((cardData) => (
             <div
               key={cardData.id}
-              className="min-w-full md:min-w-[50%] lg:min-w-[33.3%] flex justify-center px-4 h-full"
+              className="min-w-full md:min-w-[50%] lg:min-w-[33.3%] flex justify-center px-3 sm:px-4"
             >
-              {/* Border Animation Wrapper */}
-              <div className="p-[3px] rounded-lg animate-border-spin bg-gradient-to-r from-red-500 via-blue-500 to-red-500">
-                {/* Original Card */}
+              {/* Precision Water-Cut / Chamfer Div Shape with 3D Tilt */}
+              <CursorScrollEffect className="w-full max-w-[380px]">
                 <div
-                  className="w-50 lg:h-90 rounded-lg shadow-shadowOne flex items-center 
-                  transition-300 overflow-hidden bg-gradient-to-r from-bodyColor 
-                  to-[#202327] group hover:bg-gradient-to-b hover:from-black hover:to-[#1e2024] 
-                  transition-colors duration-100"
+                  className="relative group w-full p-[1.5px] bg-white/15"
+                  style={{
+                    clipPath:
+                      "polygon(0 0, calc(100% - 36px) 0, 100% 36px, 100% 100%, 36px 100%, 0 calc(100% - 36px))",
+                  }}
                 >
-                  <div
-                    className="flex flex-col gap-8 px-6 py-5 items-start 
-                    translate-y-2 group-hover:translate-y-0 transition-transform duration-500"
-                  >
-                    <div className="w-[40px] h-[40px] bg-white rotate-45 animate-pulse border-b-2 border-r-2 shadow-sm shadow-red-400 border-red-600">
-                      
-                    </div>
-                    <div className="flex flex-col gap-6">
-                      <h2 className=" text-xl md:text-2xl lg:text-3xl font-bodyFont font-bold text-gray-300">
-                        {cardData.title}
-                      </h2>
-                      <p className="base text-justify">{cardData.desc1}</p>
-                    </div>
-                    <button
-                      onClick={() => openPopup(cardData.id)}
-                      className="text-gray-200 md:text-base text-sm px-6 py-3 
-                      rounded-md hover:bg-opacity-80 bg-designColor cursor-pointer"
+                {/* Inner Card Box */}
+                <div
+                  className="w-full h-full min-h-[390px] bg-[#11141c] p-7 md:p-8 flex flex-col justify-between"
+                  style={{
+                    clipPath:
+                      "polygon(0 0, calc(100% - 35px) 0, 100% 35px, 100% 100%, 35px 100%, 0 calc(100% - 35px))",
+                  }}
+                >
+                  {/* Top: Cut-Corner Icon Badge & Index Indicator */}
+                  <div className="flex items-center justify-between">
+                    <div
+                      className="w-14 h-14 bg-white/[0.04] border border-white/15 flex items-center justify-center text-designColor group-hover:bg-designColor group-hover:text-white group-hover:border-designColor transition-all duration-300"
+                      style={{
+                        clipPath:
+                          "polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px))",
+                      }}
                     >
-                      View more
+                      {featureIcons[cardData.id] || <Code className="w-6 h-6" />}
+                    </div>
+
+                    <span className="font-mono text-xs font-bold text-gray-500 group-hover:text-designColor transition-colors">
+                      #{cardData.id.slice(-2)}
+                    </span>
+                  </div>
+
+                  {/* Center: Title & Description */}
+                  <div className="flex flex-col gap-3 my-4">
+                    <h2 className="text-xl md:text-2xl font-bodyFont font-bold text-gray-200 group-hover:text-white transition-colors">
+                      {cardData.title}
+                    </h2>
+                    <p className="text-sm md:text-base text-gray-400 text-justify leading-relaxed line-clamp-3">
+                      {cardData.desc1}
+                    </p>
+                  </div>
+
+                  {/* Bottom: Cut-Corner Action Button & Explore Tag */}
+                  <div className="pt-3 border-t border-white/10 flex items-center justify-between">
+                    <button
+                      type="button"
+                      onClick={() => openPopup(cardData.id)}
+                      className="relative z-20 inline-flex items-center gap-2 text-white text-xs md:text-sm font-semibold px-6 py-2.5 bg-designColor hover:bg-designColor/85 transition-colors duration-300 cursor-pointer active:scale-95 pointer-events-auto"
+                      style={{
+                        clipPath:
+                          "polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 0 100%)",
+                      }}
+                    >
+                      <span>View more</span>
+                      <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                     </button>
+
+                    <span className="text-[11px] font-mono text-gray-500 group-hover:text-gray-300 transition-colors">
+                      Explore &rarr;
+                    </span>
                   </div>
-                  <div>
-                  </div>
+
                 </div>
               </div>
+              </CursorScrollEffect>
             </div>
           ))}
         </div>
 
-        {/* Slider Buttons */}
+        {/* Slider Navigation Buttons - Clean without shadow */}
         <button
           onClick={prevSlide}
-          className="absolute left-2 top-1/2 -translate-y-1/2 
-          bg-black/50 text-white p-2 rounded-full hover:bg-black/70 transition"
+          aria-label="Previous Slide"
+          className="absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-[#11141c] border border-white/20 text-white flex items-center justify-center hover:bg-designColor hover:border-designColor transition-all duration-300 z-20 cursor-pointer"
         >
-          <ChevronLeft />
+          <ChevronLeft className="w-5 h-5" />
         </button>
         <button
           onClick={nextSlide}
-          className="absolute right-2 top-1/2 -translate-y-1/2 
-          bg-black/50 text-white p-2 rounded-full hover:bg-black/70 transition"
+          aria-label="Next Slide"
+          className="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-[#11141c] border border-white/20 text-white flex items-center justify-center hover:bg-designColor hover:border-designColor transition-all duration-300 z-20 cursor-pointer"
         >
-          <ChevronRight />
+          <ChevronRight className="w-5 h-5" />
         </button>
       </div>
     </section>
