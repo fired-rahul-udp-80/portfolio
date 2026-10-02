@@ -1,6 +1,6 @@
 import React from "react";
 import { Typewriter, Cursor, useTypewriter } from "react-simple-typewriter";
-import { SiTailwindcss, SiFigma, SiAngular } from "react-icons/si";
+import { SiTailwindcss, SiFigma, SiAngular, SiNextdotjs } from "react-icons/si";
 import {
   FaFigma,
   FaLinkedin,
@@ -8,27 +8,41 @@ import {
   FaGithub,
   FaAngular,
   FaReact,
-   
+
 } from "react-icons/fa";
 import { RiNodejsLine } from "react-icons/ri";
 import { file } from "../../assets";
 import { Link } from "react-router";
 import { DiMongodb } from "react-icons/di";
+import { motion } from "framer-motion";
+import { useTheme } from "../../context/ThemeContext";
+import { learningChartData } from "../../constants";
 
 const Banner = () => {
+  const { themeColor } = useTheme();
   const [text] = useTypewriter({
     words: [
       " MERN/MEAN Stack Developer",
-      "WordPress Developer",
+      "QA Engineer",
       "Back End Developer",
       "Front End Developer.",
-      "UI Developer.",
+      "Software Developer",
     ],
     loop: true,
     typeSpeed: 20,
     deleteSpeed: 10,
     delaySpeed: 2000,
   });
+  const bestSkills = [
+    { name: "React", link: 'https://react.dev/', bgcolor: "#61DBFB", icon: <FaReact /> },
+    { name: "Next", link: 'https://nextjs.org/', bgcolor: "#000000", icon: <SiNextdotjs /> },
+    { name: "Angular", link: 'https://angularjs.org/', bgcolor: "#C50836", icon: <SiAngular /> },
+    { name: "NodeJs", link: 'https://nodejs.org/', bgcolor: "#68A063", icon: <RiNodejsLine /> },
+    { name: "MongoDB", link: 'https://www.mongodb.com/', bgcolor: "#55AD47", icon: <DiMongodb /> },
+    { name: "TailwindCSS", link: 'https://tailwindcss.com/', bgcolor: "#38BDF8", icon: <SiTailwindcss /> },
+    { name: "Figma", link: 'https://www.figma.com/', bgcolor: "#F24E1E", icon: <FaFigma /> },
+
+  ]
   return (
     <section
       id="home"
@@ -48,7 +62,7 @@ const Banner = () => {
             <Cursor
               cursorBlinking="false"
               cursorStyle="|"
-              cursorColor="#ff014f"
+              cursorColor={themeColor}
             />
           </h2>
           <p className="text-justify lg:w-[80%]">
@@ -80,7 +94,7 @@ const Banner = () => {
                 to="https://www.instagram.com/rahul_this_side9.0/"
                 target="_blank"
               >
-                 <div className="relative group z-20">
+                <div className="relative group z-20">
                   <span className="bannerIcon bg-gradient-to-tr from-yellow-400 via-pink-500 to-purple-600 text-white hover:scale-110 transition-transform duration-300">
                     <FaInstagram />
                   </span>
@@ -94,7 +108,7 @@ const Banner = () => {
                 to="https://www.linkedin.com/in/rahulkumartechinfo/"
                 target="_blank"
               >
-                 <div className="relative group z-20">
+                <div className="relative group z-20">
                   <span className="bannerIcon bg-[#0A66C2] text-white hover:scale-110 transition-transform duration-300">
                     <FaLinkedin />
                   </span>
@@ -113,115 +127,116 @@ const Banner = () => {
               BEST SKILL ON
             </h2>
             <div className="flex gap-x-4">
-              <Link to="https://react.dev/" target="_blank">
-                 <div className="relative group z-20">
-                  <span className="bannerIcon bg-[#61DBFB] text-white hover:scale-110 transition-transform duration-300">
-                    <FaReact />
-                  </span>
-                  {/* Tooltip */}
-                  <span className="absolute -top-8 left-1/2 -translate-x-[50%] px-2 py-1 text-xs font-semibold text-white bg-[#61DBFB] rounded-md opacity-0 group-hover:opacity-100 group-hover:-translate-y-2 animate-bounce transition-all duration-300">
-                    React
-                  </span>
-                </div>
-              </Link>
-              <Link to="https://angularjs.org/" target="_blank" rel="NodeJs">
-                 <div className="relative group z-20">
-                  <span className="bannerIcon bg-[#C50836] text-white hover:scale-110 transition-transform duration-300">
-                    <SiAngular />
-                  </span>
-                  {/* Tooltip */}
-                  <span className="absolute -top-8 left-1/2 -translate-x-[50%] px-2 py-1 text-xs font-semibold text-white bg-[#C50836] rounded-md opacity-0 group-hover:opacity-100 group-hover:-translate-y-2 animate-bounce transition-all duration-300">
-                    Angular
-                  </span>
-                </div>
-              </Link>
-              <Link to="https://nodejs.org/en" target="_blank" rel="NodeJs">
-                <div className="relative group z-20">
-                  <span className="bannerIcon bg-[#68A063] text-white hover:scale-110 transition-transform duration-300">
-                     <RiNodejsLine />
-                  </span>
-                  {/* Tooltip */}
-                  <span className="absolute -top-8 left-1/2 -translate-x-[50%] px-2 py-1 text-xs font-semibold text-white bg-[#68A063] rounded-md opacity-0 group-hover:opacity-100 group-hover:-translate-y-2 animate-bounce transition-all duration-300">
-                    Node
-                  </span>
-                </div>
-              </Link>
-              <Link to="https://www.mongodb.com/" target="_blank" rel="NodeJs">
-                <div className="relative group z-20">
-                  <span className="bannerIcon bg-[#55AD47] text-white hover:scale-110 transition-transform duration-300">
-                    <DiMongodb />
-                  </span>
-                  {/* Tooltip */}
-                  <span className="absolute -top-8 left-1/2 -translate-x-[50%] px-2 py-1 text-xs font-semibold text-white bg-[#55AD47] rounded-md opacity-0 group-hover:opacity-100 group-hover:-translate-y-2 animate-bounce transition-all duration-300">
-                    MongoDB
-                  </span>
-                </div>
-              </Link>
-
-              <Link to="https://tailwindcss.com/" target="_blank">
-                 <div className="relative group z-20">
-                  <span className="bannerIcon bg-[#38BDF8] text-white hover:scale-110 transition-transform duration-300">
-                    <SiTailwindcss />
-                  </span>
-                  {/* Tooltip */}
-                  <span className="absolute -top-8 left-1/2 -translate-x-[50%] px-2 py-1 text-xs font-semibold text-white bg-[#38BDF8] rounded-md opacity-0 group-hover:opacity-100 group-hover:-translate-y-2 animate-bounce transition-all duration-300">
-                    Tailwind
-                  </span>
-                </div>
-              </Link>
-              <Link to="https://www.figma.com/" target="_blank">
-                 <div className="relative group z-20">
-                  <span className="bannerIcon bg-[#F24E1E] text-white hover:scale-110 transition-transform duration-300">
-                    <FaFigma />
-                  </span>
-                  {/* Tooltip */}
-                  <span className="absolute -top-8 left-1/2 -translate-x-[50%] px-2 py-1 text-xs font-semibold text-white bg-[#F24E1E] rounded-md opacity-0 group-hover:opacity-100 group-hover:-translate-y-2 animate-bounce transition-all duration-300">
-                    Figma
-                  </span>
-                </div>
-              </Link>
+              {bestSkills.map((skill, index) => (
+                <Link key={index} to={skill.link} target="_blank">
+                  <div className="relative group z-20">
+                    <span className={`bannerIcon bg-[${skill.bgcolor}] text-white hover:scale-110 transition-transform duration-300`}>
+                      {skill.icon}
+                    </span>
+                    {/* Tooltip */}
+                    <span className="absolute -top-8 left-1/2 -translate-x-[50%] px-2 py-1 text-xs font-semibold text-white bg-black rounded-md opacity-0 group-hover:opacity-100 group-hover:-translate-y-2 animate-bounce transition-all duration-300">
+                      {skill.name}
+                    </span>
+                  </div>
+                </Link>
+              ))}
             </div>
           </div>
-           
+
         </div>
       </div>
 
       <div className="md:w-1/3 lg:hidden xl:flex md:flex-col justify-center  items-end  relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-full bg-red-100 opacity-5 rounded-3xl blur-3xl"></div>
-        <div className="absolute top-[50%] left-[50%] -translate-y-[50%] -translate-x-[50%] w-[120%]  h-[120%] rounded-full bg-red-400 opacity-10 "></div>
-        <div className="absolute top-[47%] left-[53%] -translate-y-[50%] -translate-x-[50%] w-[105%]  h-[105%] rounded-full bg-red-600 opacity-20 "></div>
+        <div className="absolute top-0 left-0 w-full h-full bg-designColor opacity-5 rounded-3xl blur-3xl"></div>
+        <div className="absolute top-[50%] left-[50%] -translate-y-[50%] -translate-x-[50%] w-[120%] h-[120%] rounded-full bg-designColor opacity-10"></div>
+        <div className="absolute top-[47%] left-[53%] -translate-y-[50%] -translate-x-[50%] w-[105%] h-[105%] rounded-full bg-designColor/30 opacity-20"></div>
 
-        <div className="z-10 bg-red-950 rounded-full">
+        <div className="z-10 bg-designColor/10 rounded-full">
           <img
             src={file}
             alt=""
             className=" z-40 lg:w-[400px] w-[270px] lg:h-[430px] h-[280px] contrast-200  saturate-50   "
           />
         </div>
-        <div
-          className="  z-20 absolute top-[97%] -right-[5%] -translate-y-[90%] -translate-x-[10%] bg-blue-100 w-[50%] h-[30%]
-             rounded-md flex flex-col justify-between items-center py-2"
+        <motion.div
+          initial={{ opacity: 0, scale: 0.88 }}
+          animate={{ opacity: 1, scale: 1, y: [0, -6, 0] }}
+          transition={{
+            opacity: { duration: 0.6 },
+            scale: { duration: 0.6 },
+
+          }}
+          className="z-30 hidden md:block absolute bottom-0 right-0 bg-[#11141c]/95 border border-white/10 backdrop-blur-md p-3 shadow-2xl flex flex-col gap-2 w-[40%] md:h-32 rounded-t-2xl"
         >
-          <p className="text-gray-900 text-xs md:text-lg font-titleFont font-semibold ">
-            Learning Chart
-          </p>
-          <div>
-            <div className=" h-full flex gap-2 md:gap-4 ">
-              <div className="text-gray-800 text-[5px] md:text-[10px] font-bold font-bodyFont flex flex-col gap-4 md:gap-y-5 w-[10%] ">
-                <p>100</p>
-                <p>50</p>
-                <p>10</p>
+          {/* Card Header */}
+          <div className="flex items-center justify-between gap-2 border-b border-white/10 pb-1.5">
+            <div className="flex items-center gap-1.5">
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+              </span>
+              <p className="text-white text-xs font-titleFont font-semibold tracking-wide">
+                Learning Chart
+              </p>
+            </div>
+            <span className="text-[10px] font-bodyFont text-emerald-400 font-semibold px-1.5 py-0.5 bg-emerald-500/10 rounded border border-emerald-500/20">
+              Active
+            </span>
+          </div>
+
+          {/* Chart Area */}
+          <div className="flex items-end gap-2.5 sm:h-20 pt-1">
+            {/* Y-Axis Scale */}
+            <div className="text-gray-400 text-[9px] font-mono flex flex-col justify-between h-full py-0.5 shrink-0 select-none">
+              <span>100</span>
+              <span>50</span>
+              <span>10</span>
+            </div>
+
+            {/* Grid & Bars Container */}
+            <div className="relative flex-1 h-full flex items-end justify-between px-1">
+              {/* Subtle background horizontal grid lines */}
+              <div className="absolute inset-0 flex flex-col justify-between pointer-events-none opacity-40">
+                <div className="border-b border-dashed border-white/10 w-full" />
+                <div className="border-b border-dashed border-white/10 w-full" />
+                <div className="border-b border-dashed border-white/10 w-full" />
               </div>
-              <div className="flex gap-4 items-end w-[90%]">
-                <div className="w-2 md:w-5 h-14 md:h-20 bg-purple-700 rounded-t-md"></div>
-                <div className="w-2 md:w-5 h-8 md:h-14 bg-pink-900 rounded-t-md"></div>
-                <div className="w-2 md:w-5 h-6 bg-yellow-500 rounded-t-md"></div>
-                <div className="w-2 md:w-5 h-12 md:h-10 bg-green-800 rounded-t-md"></div>
-                <div className="w-2 md:w-5 h-8 md:h-12 bg-cyan-700 rounded-t-md"></div>
-              </div>
+
+              {/* Dynamic Animated Bars */}
+              {learningChartData.map((item, index) => (
+                <div
+                  key={item.id}
+                  className="flex flex-col items-center gap-1 h-full justify-end z-10"
+                >
+                  <div className="relative flex flex-col items-center justify-end h-full group">
+                    {/* Hover Tooltip */}
+                    <div className="absolute -top-7 px-1.5 py-0.5 bg-black/95 text-white text-[9px] font-medium rounded shadow-xl border border-white/10 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-30">
+                      {item.label} {item.value}%
+                    </div>
+
+                    {/* Animated Bar */}
+                    <motion.div
+                      initial={{ height: 0 }}
+                      animate={{ height: `${item.value}%` }}
+                      transition={{
+                        duration: 1.2,
+                        delay: 0.15 * index,
+                        ease: [0.25, 0.4, 0.25, 1],
+                      }}
+                      style={{ backgroundColor: item.color }}
+                      className="w-2.5 sm:w-3.5 rounded-t-md hover:brightness-125 transition-all shadow-sm cursor-pointer"
+                    />
+                  </div>
+
+                  {/* Tech Short Label */}
+                  <span className="text-[8px] sm:text-[9px] text-gray-400 font-medium font-bodyFont group-hover:text-white transition-colors">
+                    {item.short}
+                  </span>
+                </div>
+              ))}
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

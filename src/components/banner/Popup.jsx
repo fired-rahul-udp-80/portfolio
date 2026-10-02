@@ -26,8 +26,8 @@ const Popup = ({ image, popToggle, closepopup, title, desc1, desc2 }) => {
     ? Array.isArray(image?.[1])
       ? image[1]
       : image?.[1]
-      ? [image[1]]
-      : []
+        ? [image[1]]
+        : []
     : [];
   const projectDescription = isProjectPopup ? image?.[2] : null;
 
@@ -140,11 +140,10 @@ const Popup = ({ image, popToggle, closepopup, title, desc1, desc2 }) => {
                           key={idx}
                           type="button"
                           onClick={() => setActiveImageIndex(idx)}
-                          className={`w-14 h-10 md:w-16 md:h-11 shrink-0 border overflow-hidden transition-all duration-200 cursor-pointer ${
-                            activeImageIndex === idx
+                          className={`w-14 h-10 md:w-16 md:h-11 shrink-0 border overflow-hidden transition-all duration-200 cursor-pointer ${activeImageIndex === idx
                               ? "border-designColor ring-2 ring-designColor/30 opacity-100"
                               : "border-white/10 opacity-50 hover:opacity-80"
-                          }`}
+                            }`}
                         >
                           <img
                             src={thumb}
@@ -164,7 +163,7 @@ const Popup = ({ image, popToggle, closepopup, title, desc1, desc2 }) => {
                   <h4 className="text-base md:text-lg font-bold font-titleFont text-white">
                     {projectTitle}
                   </h4>
-                  <span className="text-xs font-mono text-designColor flex items-center gap-1.5">
+                  <span className="text-xs text-designColor flex items-center gap-1.5">
                     <Eye className="w-3.5 h-3.5" /> Full Overview
                   </span>
                 </div>
@@ -197,7 +196,7 @@ const Popup = ({ image, popToggle, closepopup, title, desc1, desc2 }) => {
 
         {/* Modal Bottom Footer */}
         <div className="px-5 md:px-7 py-3.5 border-t border-white/10 bg-[#121622]/90 flex items-center justify-between">
-          <span className="text-[11px] font-mono text-gray-500">
+          <span className="text-[11px] text-gray-500">
             Press <kbd className="px-1.5 py-0.5 border border-white/20 bg-white/[0.05] text-gray-400 text-[10px]">Esc</kbd> to close
           </span>
 

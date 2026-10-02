@@ -12,7 +12,7 @@
   gap: 0.5rem;
   padding: 2px;
    
-  background: linear-gradient(135deg, #ff014f, #ff3b77, #7928ca, #ff014f);
+  background: linear-gradient(135deg, var(--design-color, #6366f1), rgba(255,255,255,0.4), var(--design-color, #6366f1));
   background-size: 300% 300%;
   animation: certGlowBorder 6s ease infinite;
    

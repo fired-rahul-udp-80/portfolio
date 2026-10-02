@@ -33,24 +33,24 @@ const ProjectCard = ({
           transition-all duration-300 flex flex-col justify-between cursor-pointer select-none group"
       >
         {/* Top Header: Avatar/Thumbnail + Title + Live Link */}
-      <div>
-        <div className="flex items-center justify-between gap-3 mb-3">
-          <div className="flex items-center gap-3 min-w-0">
-            {/* Project Thumbnail / Icon */}
-            <div className="w-12 h-12 rounded-xl overflow-hidden border border-white/15 bg-black/50 shrink-0 flex items-center justify-center p-1 group-hover:border-designColor/50 transition-colors">
-              <img
-                src={src}
-                alt={title}
-                className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300"
-              />
-            </div>
+        <div>
+          <div className="flex items-center justify-between gap-3 mb-3">
+            <div className="flex items-center gap-3 min-w-0">
+              {/* Project Thumbnail / Icon */}
+              <div className={`w-12 h-12 rounded-xl overflow-hidden border border-white/15 bg-black/50 shrink-0 flex items-center justify-center p-1 group-hover:border-designColor transition-colors`}>
+                <img
+                  src={src}
+                  alt={title}
+                  className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300"
+                />
+              </div>
 
-            {/* Title & Category */}
-            <div className="min-w-0">
-              <h3 className="text-base md:text-lg font-bold text-white group-hover:text-designColor transition-colors truncate">
+              {/* Title & Category */}
+              <div className="min-w-0">
+                <h3 className="text-base md:text-lg font-bold text-white group-hover:text-designColor transition-colors truncate">
                 {title}
               </h3>
-              <p className="text-xs text-gray-400 font-mono truncate">
+              <p className="text-xs text-gray-400 font-titleFont truncate">
                 {category}
               </p>
             </div>
@@ -87,7 +87,7 @@ const ProjectCard = ({
           <ArrowUpRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
         </button>
 
-        <span className="text-[11px] font-mono text-gray-500">
+        <span className="text-[11px] font-titleFont text-gray-500">
           Click to expand
         </span>
       </div>

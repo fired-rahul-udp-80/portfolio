@@ -27,7 +27,7 @@ const ResumeCard = ({ title, subTitle, result, des, tags = [] }) => {
             <h3 className="text-lg md:text-xl font-bold text-gray-100 group-hover:text-designColor transition-colors duration-300 font-titleFont tracking-wide">
               {title}
             </h3>
-            <p className="text-xs md:text-sm text-gray-400 group-hover:text-gray-300 transition-colors duration-300 font-mono flex items-center gap-1.5">
+            <p className="text-xs md:text-sm text-gray-400 group-hover:text-gray-300 transition-colors duration-300 font-bodyFont flex items-center gap-1.5">
               <Calendar className="w-3.5 h-3.5 text-designColor shrink-0" />
               <span>{subTitle}</span>
             </p>
@@ -36,7 +36,7 @@ const ResumeCard = ({ title, subTitle, result, des, tags = [] }) => {
           {/* Result / Grade / Badge */}
           {result && (
             <div className="self-start sm:self-auto shrink-0">
-              <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs md:text-sm font-semibold font-mono text-designColor bg-designColor/10 border border-designColor/30 shadow-[0_0_12px_rgba(255,1,79,0.15)]">
+              <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs md:text-sm font-semibold font-bodyFont text-designColor bg-designColor/10 border border-designColor/30 shadow-sm shadow-designColor/20">
                 <Award className="w-3.5 h-3.5 text-designColor" />
                 {result}
               </span>
@@ -55,7 +55,7 @@ const ResumeCard = ({ title, subTitle, result, des, tags = [] }) => {
             {tags.map((tag, idx) => (
               <span
                 key={idx}
-                className="text-[11px] md:text-xs font-mono px-2.5 py-1 rounded-md bg-white/[0.04] text-gray-300 border border-white/10 group-hover:border-designColor/30 transition-colors"
+                className="text-[11px] md:text-xs font-bodyFont px-2.5 py-1 rounded-md bg-white/[0.04] text-gray-300 border border-white/10 group-hover:border-designColor/30 transition-colors"
               >
                 {tag}
               </span>

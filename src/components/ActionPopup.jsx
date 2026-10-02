@@ -69,7 +69,7 @@ const ActionPopup = ({ setActionClosePopup }) => {
             className="group flex items-center justify-between p-3.5 sm:p-4 rounded-xl bg-white/[0.03] border border-white/10 hover:border-designColor/50 hover:bg-white/[0.06] transition-all duration-300 cursor-pointer"
           >
             <div className="flex items-center gap-3.5">
-              <div className="w-10 h-10 rounded-lg bg-designColor/10 border border-designColor/20 flex items-center justify-center text-designColor group-hover:scale-110 group-hover:bg-designColor group-hover:text-white transition-all duration-300 shadow-[0_0_10px_rgba(255,1,79,0.2)]">
+              <div className="w-10 h-10 rounded-lg bg-designColor/10 border border-designColor/20 flex items-center justify-center text-designColor group-hover:scale-110 group-hover:bg-designColor group-hover:text-white transition-all duration-300 shadow-sm shadow-designColor/20">
                 <PhoneCall className="w-4 h-4" />
               </div>
               <div className="text-left">
@@ -105,7 +105,7 @@ const ActionPopup = ({ setActionClosePopup }) => {
           <a
             href="/RahulKumar_Resume_cp.pdf"
             download="Rahul_Kumar_Resume.pdf"
-            className="group mt-1 relative flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl font-semibold text-sm text-white bg-gradient-to-r from-designColor via-[#ff2b70] to-[#ff014f] shadow-[0_0_20px_rgba(255,1,79,0.35)] hover:shadow-[0_0_30px_rgba(255,1,79,0.55)] hover:brightness-110 transition-all duration-300 cursor-pointer active:scale-[0.98]"
+            className="group mt-1 relative flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl font-semibold text-sm text-white bg-designColor hover:bg-designColor/90 shadow-lg shadow-designColor/30 hover:shadow-designColor/50 hover:brightness-110 transition-all duration-300 cursor-pointer active:scale-[0.98]"
           >
             <FileDown className="w-4 h-4 transition-transform group-hover:translate-y-0.5" />
             <span>Download CV (Resume)</span>

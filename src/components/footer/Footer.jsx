@@ -3,6 +3,8 @@ import { Link as ScrollLink } from "react-scroll";
 import { FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
 import { ArrowUp, Mail, MapPin, Heart, Terminal, Code2 } from "lucide-react";
 import { Link } from "react-router";
+import { BackgroundGradient } from "../common";
+import { socialLinksData } from "../../constants";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -23,7 +25,10 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="w-full relative bg-[#070b13]/95 backdrop-blur-md border-t border-white/10 font-bodyFont text-gray-400">
+    <footer className="w-full relative bg-[#070b13]/95 backdrop-blur-md border-t border-white/10 font-bodyFont text-gray-400 overflow-hidden">
+      {/* Theme Background Gradient Component */}
+      <BackgroundGradient showGrid={true} animate={true} />
+
       {/* Top Ambient Glow Line */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 max-w-4xl h-[1px] bg-gradient-to-r from-transparent via-designColor/60 to-transparent" />
 
@@ -66,7 +71,7 @@ const Footer = () => {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
                 <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" />
               </span>
-              <span className="text-xs font-mono text-gray-300">
+              <span className="text-xs text-gray-300">
                 Open for opportunities & collaborations
               </span>
             </div>
@@ -74,7 +79,7 @@ const Footer = () => {
 
           {/* Quick Navigation Links (3 cols) */}
           <div className="lg:col-span-3 flex flex-col gap-4">
-            <h4 className="text-xs font-mono uppercase tracking-wider text-white flex items-center gap-2 border-b border-white/10 pb-2 w-fit">
+            <h4 className="text-xs uppercase tracking-wider text-white flex items-center gap-2 border-b border-white/10 pb-2 w-fit">
               <Terminal className="w-3.5 h-3.5 text-designColor" />
               Navigation
             </h4>
@@ -99,52 +104,33 @@ const Footer = () => {
 
           {/* Social Connect & Contact (4 cols) */}
           <div className="lg:col-span-4 flex flex-col gap-4">
-            <h4 className="text-xs font-mono uppercase tracking-wider text-white flex items-center gap-2 border-b border-white/10 pb-2 w-fit">
+            <h4 className="text-xs uppercase tracking-wider text-white flex items-center gap-2 border-b border-white/10 pb-2 w-fit">
               <Code2 className="w-3.5 h-3.5 text-designColor" />
               Connect With Me
             </h4>
             
-            <p className="text-xs font-mono text-gray-400">
+            <p className="text-xs text-gray-400">
               Feel free to connect on GitHub, LinkedIn or drop a direct message.
             </p>
 
             {/* Social Icons Hub */}
             <div className="flex items-center gap-3 pt-1">
-              <Link
-                to="https://github.com/fired-rahul-udp-80"
-                target="_blank"
-                className="w-10 h-10 border border-white/10 bg-white/[0.03] hover:bg-designColor hover:border-designColor text-gray-300 hover:text-white flex items-center justify-center transition-all duration-300 cursor-pointer"
-                title="GitHub"
-                aria-label="GitHub Profile"
-              >
-                <FaGithub className="w-4 h-4" />
-              </Link>
-              <Link
-                to="https://www.linkedin.com/in/rahulkumartechinfo/"
-                target="_blank"
-                className="w-10 h-10 border border-white/10 bg-white/[0.03] hover:bg-designColor hover:border-designColor text-gray-300 hover:text-white flex items-center justify-center transition-all duration-300 cursor-pointer"
-                title="LinkedIn"
-                aria-label="LinkedIn Profile"
-              >
-                <FaLinkedin className="w-4 h-4" />
-              </Link>
-              <Link
-                to="https://www.instagram.com/"
-                target="_blank"
-                className="w-10 h-10 border border-white/10 bg-white/[0.03] hover:bg-designColor hover:border-designColor text-gray-300 hover:text-white flex items-center justify-center transition-all duration-300 cursor-pointer"
-                title="Instagram"
-                aria-label="Instagram Profile"
-              >
-                <FaInstagram className="w-4 h-4" />
-              </Link>
-              <a
-                href="mailto:kumarrahulhzb799@gmail.com"
-                className="w-10 h-10 border border-white/10 bg-white/[0.03] hover:bg-designColor hover:border-designColor text-gray-300 hover:text-white flex items-center justify-center transition-all duration-300 cursor-pointer"
-                title="Direct Mail"
-                aria-label="Send Email"
-              >
-                <Mail className="w-4 h-4" />
-              </a>
+              {
+                socialLinksData.map((item,index) =>{
+                  const IconComponent = item.icon;
+                  return(
+                    <Link
+                      to={item.url}
+                      target="_blank"
+                      className="w-10 h-10 border border-white/10 bg-white/[0.03] hover:bg-designColor hover:border-designColor text-gray-300 hover:text-white flex items-center justify-center transition-all duration-300 cursor-pointer"
+                      title={item.title}
+                      aria-label={`${item.title} Profile`}
+                    >
+                      <IconComponent className="w-4 h-4" />
+                    </Link>
+                  )
+                })
+              }
             </div>
 
             {/* Base Location */}
@@ -157,7 +143,7 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar: Copyright & Back to Top */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-gray-500">
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-500">
           <p className="text-center sm:text-left">
             © {currentYear} <span className="text-gray-300 font-semibold">Rahul Kumar</span>. All rights reserved.
           </p>

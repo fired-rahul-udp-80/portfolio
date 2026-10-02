@@ -7,8 +7,10 @@ import Skills from "./Skills";
 import { GraduationCap, Code2, Briefcase, Award } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
+
 const Resume = () => {
   const [activeTab, setActiveTab] = useState("education");
+  
 
   const tabs = [
     { id: "education", label: "Education", icon: GraduationCap },
@@ -36,7 +38,7 @@ const Resume = () => {
                 onClick={() => setActiveTab(tab.id)}
                 className={`relative group flex items-center justify-center gap-2 py-3.5 px-3 md:py-4 md:px-4 rounded-xl font-medium text-xs sm:text-sm md:text-base transition-all duration-300 cursor-pointer select-none ${
                   isActive
-                    ? "text-designColor bg-gradient-to-r from-designColor/15 via-[#ff014f]/10 to-transparent border border-designColor/50 shadow-[0_0_20px_rgba(255,1,79,0.25)]"
+                    ? "text-designColor bg-gradient-to-r from-designColor/15 via-designColor/10 to-transparent border border-designColor/50 shadow-lg shadow-designColor/25"
                     : "text-gray-400 hover:text-white hover:bg-white/[0.04] border border-transparent"
                 }`}
               >
@@ -49,7 +51,7 @@ const Resume = () => {
 
                 {/* Active Indicator Glow Pip */}
                 {isActive && (
-                  <span className="absolute bottom-1 w-6 h-[2px] rounded-full bg-designColor shadow-[0_0_8px_#ff014f]" />
+                  <span className="absolute bottom-1 w-6 h-[2px] rounded-full bg-designColor shadow-sm shadow-designColor" />
                 )}
               </button>
             );
@@ -59,6 +61,7 @@ const Resume = () => {
 
       {/* Tab Panels */}
       <div className="w-full">
+        
         <AnimatePresence mode="wait">
           {activeTab === "education" && (
             <motion.div

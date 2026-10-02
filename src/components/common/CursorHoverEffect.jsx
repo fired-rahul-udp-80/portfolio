@@ -1,7 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
+import { useTheme } from "../../context/ThemeContext";
 import "./CursorHoverEffect.css";
 
 const CursorHoverEffect = ({ className = "" }) => {
+  const { themeColor } = useTheme();
   const dotRef = useRef(null);
   const ringRef = useRef(null);
   const spotlightRef = useRef(null);
@@ -101,14 +103,36 @@ const CursorHoverEffect = ({ className = "" }) => {
       } ${className}`}
       aria-hidden="true"
     >
-      {/* 1. Ambient Background Spotlight (subtly illuminates grid) */}
-      <div ref={spotlightRef} className="custom-cursor-spotlight" />
+      {/* 1. Ambient Background Spotlight (subtly illuminates grid with theme color) */}
+      <div
+        ref={spotlightRef}
+        className="custom-cursor-spotlight"
+        style={{
+          background: `radial-gradient(circle, ${themeColor}2e 0%, ${themeColor}0d 35%, transparent 70%)`,
+        }}
+      />
 
-      {/* 2. Fluid Follower Outer Ring (Interpolated smooth physics) */}
-      <div ref={ringRef} className="custom-cursor-ring" />
+      {/* 2. Fluid Follower Outer Ring (Interpolated smooth physics with theme color) */}
+      <div
+        ref={ringRef}
+        className="custom-cursor-ring"
+        style={{
+          borderColor: isHovered ? themeColor : `${themeColor}aa`,
+          backgroundColor: isHovered ? `${themeColor}26` : `${themeColor}0a`,
+          boxShadow: isHovered
+            ? `0 0 25px ${themeColor}8c, inset 0 0 12px ${themeColor}40`
+            : `0 0 14px ${themeColor}59, inset 0 0 8px ${themeColor}26`,
+        }}
+      />
 
       {/* 3. Instant Zero-Lag Precision Laser Dot */}
-      <div ref={dotRef} className="custom-cursor-dot" />
+      <div
+        ref={dotRef}
+        className="custom-cursor-dot"
+        style={{
+          boxShadow: `0 0 8px #ffffff, 0 0 16px ${themeColor}`,
+        }}
+      />
 
       {/* 4. Click Shockwave Ripples */}
       {ripples.map((ripple) => (
@@ -117,6 +141,8 @@ const CursorHoverEffect = ({ className = "" }) => {
           className="custom-cursor-ripple"
           style={{
             transform: `translate3d(${ripple.x}px, ${ripple.y}px, 0)`,
+            borderColor: themeColor,
+            boxShadow: `0 0 15px ${themeColor}80`,
           }}
         />
       ))}

@@ -1,129 +1,24 @@
 import React from "react";
 import { motion } from "framer-motion";
-import {
-  SiReact,
-  SiNodedotjs,
-  SiMongodb,
-  SiMysql,
-  SiJavascript,
-  SiTailwindcss,
-  SiFigma,
-  SiWordpress,
-  SiExpress,
-  SiCplusplus,
-} from "react-icons/si";
-import { FaJava, FaNetworkWired, FaCode } from "react-icons/fa";
-import { Layers, Database, Sparkles, Terminal } from "lucide-react";
+
+
+import { Database, Sparkles, Layers, Terminal} from "lucide-react";
 import { CursorScrollEffect } from "../common";
+import { frontendSkills, backendAndCoreSkills, skillPills } from "../../constants/index";
 
 const Skills = () => {
-  const frontendSkills = [
-    {
-      name: "React.js & Next.js",
-      level: "92%",
-      icon: SiReact,
-      color: "#61DAFB",
-      tag: "Advanced",
-    },
-    {
-      name: "Full Stack (MERN Architecture)",
-      level: "88%",
-      icon: Layers,
-      color: "#ff014f",
-      tag: "Specialized",
-    },
-    {
-      name: "JavaScript (ES6+) & Modern Web",
-      level: "90%",
-      icon: SiJavascript,
-      color: "#F7DF1E",
-      tag: "Core",
-    },
-    {
-      name: "Tailwind CSS & Responsive UI",
-      level: "95%",
-      icon: SiTailwindcss,
-      color: "#06B6D4",
-      tag: "Expert",
-    },
-    {
-      name: "UI/UX (Figma, Canva & Design)",
-      level: "80%",
-      icon: SiFigma,
-      color: "#F24E1E",
-      tag: "Begineer",
-    },
-    {
-      name: "WordPress & CMS Development",
-      level: "70%",
-      icon: SiWordpress,
-      color: "#21759B",
-      tag: "Skilled",
-    },
-  ];
-
-  const backendAndCoreSkills = [
-    {
-      name: "Node.js & Express.js",
-      level: "88%",
-      icon: SiNodedotjs,
-      color: "#339933",
-      tag: "Advanced",
-    },
-    {
-      name: "MongoDB & MySQL Databases",
-      level: "86%",
-      icon: SiMongodb,
-      color: "#47A248",
-      tag: "Proficient",
-    },
-    {
-      name: "Core Java & OOP Architecture",
-      level: "90%",
-      icon: FaJava,
-      color: "#E76F00",
-      tag: "Core",
-    },
-    {
-      name: "C & C++ Programming",
-      level: "82%",
-      icon: SiCplusplus,
-      color: "#00599C",
-      tag: "Foundation",
-    },
-    {
-      name: "Data Structures & Algorithms (DSA)",
-      level: "80%",
-      icon: Terminal,
-      color: "#ff014f",
-      tag: "Problem Solving",
-    },
-    {
-      name: "Computer Networking & REST APIs",
-      level: "84%",
-      icon: FaNetworkWired,
-      color: "#8B5CF6",
-      tag: "Infrastructure",
-    },
-  ];
-
-  const skillPills = [
-    "React.js", 'Next.js', "Node.js", "Express.js", "MongoDB", "JavaScript", "Java", 
-    "Tailwind CSS", "RESTful APIs", "Git & GitHub", "MySQL", "Redux", "DSA"
-  ];
-
   const renderSkillGroup = (skills, title, subtitle, GroupIcon) => (
     <CursorScrollEffect className="w-full h-full">
       <div className="flex flex-col h-full gap-6 p-6 md:p-8 bg-[#11141c]/90 border border-white/10 backdrop-blur-md transition-all duration-300 hover:border-designColor/40">
         <div className="flex items-center gap-3 border-b border-white/10 pb-4">
-          <div className="w-10 h-10 rounded-xl bg-white/[0.04] border border-white/15 flex items-center justify-center text-designColor shadow-[0_0_12px_rgba(255,1,79,0.2)]">
+          <div className="w-10 h-10 rounded-xl bg-white/[0.04] border border-white/15 flex items-center justify-center text-designColor shadow-sm shadow-designColor/20">
             <GroupIcon className="w-5 h-5" />
           </div>
           <div>
             <h3 className="text-xl md:text-2xl font-bold font-titleFont text-white">
               {title}
             </h3>
-            <p className="text-xs text-gray-400 font-mono">{subtitle}</p>
+            <p className="text-xs text-gray-400 font-titleFont">{subtitle}</p>
           </div>
         </div>
 
@@ -145,11 +40,11 @@ const Skills = () => {
                     </span>
                   </div>
 
-                  <div className="flex items-center gap-2">
-                    <span className="text-[10px] md:text-xs font-mono px-2 py-0.5 rounded-full bg-white/[0.04] text-gray-400 border border-white/5">
+                  <div className="flex items-center gap-2 font-bodyFont">
+                    <span className="text-[10px] md:text-xs px-2 py-0.5 rounded-full bg-white/[0.04] text-gray-400 border border-white/5">
                       {skill.tag}
                     </span>
-                    <span className="text-xs md:text-sm font-mono font-bold text-designColor">
+                    <span className="text-xs md:text-sm font-bold text-designColor">
                       {skill.level}
                     </span>
                   </div>
@@ -162,7 +57,7 @@ const Skills = () => {
                     whileInView={{ width: skill.level, opacity: 1 }}
                     viewport={{ once: true }}
                     transition={{ duration: 1, delay: index * 0.1, ease: "easeOut" }}
-                    className="h-full rounded-full bg-gradient-to-r from-designColor via-[#ff2b70] to-[#ff7597] shadow-[0_0_10px_rgba(255,1,79,0.5)]"
+                    className="h-full rounded-full bg-designColor shadow-[0_0_10px_var(--design-color)]"
                   />
                 </div>
               </div>
@@ -182,7 +77,7 @@ const Skills = () => {
       {/* Header Info */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-white/10 pb-6">
         <div>
-          <span className="text-xs md:text-sm text-designColor tracking-[4px] uppercase font-mono flex items-center gap-2">
+          <span className="text-xs md:text-sm text-designColor tracking-[1px] uppercase font-titleFont flex items-center gap-2">
             <Sparkles className="w-4 h-4" />
             Core Competencies
           </span>
@@ -212,7 +107,7 @@ const Skills = () => {
       {/* Tech Stack Fast-Scan Pills */}
       <CursorScrollEffect className="w-full">
         <div className="p-6 bg-[#11141c]/60 border border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 transition-all duration-300 hover:border-designColor/30">
-          <span className="text-xs md:text-sm font-mono text-gray-400 uppercase tracking-wider shrink-0 flex items-center gap-2">
+          <span className="text-xs md:text-sm font-titleFont text-gray-400 uppercase tracking-wider shrink-0 flex items-center gap-2">
             <Terminal className="w-4 h-4 text-designColor" />
             Quick Stack Overview:
           </span>
@@ -220,7 +115,7 @@ const Skills = () => {
             {skillPills.map((tech, idx) => (
               <span
                 key={idx}
-                className="text-xs font-mono px-3 py-1 rounded-full bg-white/[0.04] text-gray-300 border border-white/10 hover:border-designColor/50 hover:text-designColor hover:bg-designColor/10 transition-all duration-300 cursor-default select-none"
+                className="text-xs font-bodyFont px-3 py-1 rounded-full bg-white/[0.04] text-gray-300 border border-white/10 hover:border-designColor/50 hover:text-designColor hover:bg-designColor/10 transition-all duration-300 cursor-default select-none"
               >
                 {tech}
               </span>

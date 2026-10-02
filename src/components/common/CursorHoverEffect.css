@@ -36,12 +36,6 @@
   margin-left: -240px;
   border-radius: 50%;
   pointer-events: none;
-  background: radial-gradient(
-    circle,
-    rgba(255, 1, 79, 0.12) 0%,
-    rgba(255, 1, 79, 0.04) 35%,
-    transparent 70%
-  );
   filter: blur(30px);
   will-change: transform;
   mix-blend-mode: screen;
@@ -58,9 +52,8 @@
   margin-left: -18px;
   border-radius: 50%;
   pointer-events: none;
-  border: 1.5px solid rgba(255, 1, 79, 0.65);
-  box-shadow: 0 0 14px rgba(255, 1, 79, 0.35), inset 0 0 8px rgba(255, 1, 79, 0.15);
-  background: rgba(255, 1, 79, 0.03);
+  border-width: 1.5px;
+  border-style: solid;
   transition: width 0.25s cubic-bezier(0.2, 0.8, 0.2, 1),
               height 0.25s cubic-bezier(0.2, 0.8, 0.2, 1),
               margin 0.25s cubic-bezier(0.2, 0.8, 0.2, 1),
@@ -76,9 +69,6 @@
   height: 60px;
   margin-top: -30px;
   margin-left: -30px;
-  border-color: rgba(255, 1, 79, 0.95);
-  background-color: rgba(255, 1, 79, 0.14);
-  box-shadow: 0 0 25px rgba(255, 1, 79, 0.55), inset 0 0 12px rgba(255, 1, 79, 0.25);
 }
 
 /* 3. Instant Precision Laser Dot */
@@ -93,7 +83,7 @@
   border-radius: 50%;
   pointer-events: none;
   background-color: #ffffff;
-  box-shadow: 0 0 8px #ffffff, 0 0 16px #ff014f;
+  box-shadow: 0 0 8px #ffffff, 0 0 16px var(--design-color, #6366f1);
   transition: transform 0.2s ease, opacity 0.2s ease;
   will-change: transform;
 }
@@ -114,7 +104,7 @@
   margin-left: -35px;
   border-radius: 50%;
   pointer-events: none;
-  border: 2px solid #ff014f;
+  border: 2px solid var(--design-color, #6366f1);
   animation: cursorShockwave 0.55s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
 }
 

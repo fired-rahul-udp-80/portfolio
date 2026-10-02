@@ -3,23 +3,14 @@ import { Link } from "react-router";
 import { motion } from "framer-motion";
 import {
   Award,
-  CheckCircle2,
   ExternalLink,
-  ShieldCheck,
-  Sparkles,
   FolderOpen,
 } from "lucide-react";
 import { CursorScrollEffect } from "../common";
 import "./CertificateSection.css";
+import { stats } from "../../constants";
 
 const Achievement = () => {
-  const stats = [
-    { label: "Internships Completed", value: "6+", icon: ShieldCheck },
-    { label: "Technical Credentials", value: "10+", icon: Award },
-    { label: "Top Academic CGPA", value: "9.2", icon: Sparkles },
-    { label: "Verified Documents", value: "100%", icon: CheckCircle2 },
-  ];
-
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -29,7 +20,7 @@ const Achievement = () => {
       {/* Header Info */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-white/10 pb-6">
         <div>
-          <span className="text-xs md:text-sm text-designColor tracking-[4px] uppercase font-mono flex items-center gap-2">
+          <span className="text-xs md:text-sm text-designColor tracking-[1px] uppercase font-titleFont flex items-center gap-2">
             <Award className="w-4 h-4" />
             Verified Honors
           </span>
@@ -46,14 +37,14 @@ const Achievement = () => {
           return (
             <CursorScrollEffect key={idx} className="w-full h-full">
               <div className="h-full p-4 md:p-5 bg-[#11141c]/90 border border-white/10 flex items-center gap-3.5 transition-all duration-300 hover:border-designColor/40 group">
-                <div className="w-10 h-10 rounded-lg bg-designColor/10 border border-designColor/20 flex items-center justify-center text-designColor shrink-0 group-hover:scale-110 transition-transform duration-300 shadow-[0_0_12px_rgba(255,1,79,0.15)]">
+                <div className="w-10 h-10 rounded-lg bg-designColor/10 border border-designColor/20 flex items-center justify-center text-designColor shrink-0 group-hover:scale-110 transition-transform duration-300 shadow-sm shadow-designColor/20">
                   <Icon className="w-5 h-5" />
                 </div>
                 <div>
                   <div className="text-xl md:text-2xl font-bold font-titleFont text-white group-hover:text-designColor transition-colors">
                     {stat.value}
                   </div>
-                  <div className="text-[11px] md:text-xs text-gray-400 font-mono">
+                  <div className="text-[11px] md:text-xs text-gray-400 font-bodyFont">
                     {stat.label}
                   </div>
                 </div>
@@ -70,7 +61,7 @@ const Achievement = () => {
           <div className="absolute -left-20 -bottom-20 w-52 h-52 bg-designColor/10 rounded-full blur-3xl pointer-events-none" />
 
           <div className="flex items-center gap-5 text-center md:text-left">
-            <div className="w-14 h-14 rounded-2xl bg-designColor/10 border border-designColor/30 flex items-center justify-center text-designColor shrink-0 shadow-[0_0_15px_rgba(255,1,79,0.3)]">
+            <div className="w-14 h-14 rounded-2xl bg-designColor/10 border border-designColor/30 flex items-center justify-center text-designColor shrink-0 shadow-md shadow-designColor/30">
               <FolderOpen className="w-7 h-7" />
             </div>
             <div>

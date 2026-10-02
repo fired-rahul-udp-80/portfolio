@@ -3,6 +3,7 @@ import { navLinksdata } from "../../constants";
 import { Link } from "react-scroll";
 import { RiMenu3Fill } from "react-icons/ri";
 import { IoCloseSharp } from "react-icons/io5";
+import { ThemeSelector } from "../common";
 
 const Navbar = ({ setActionClosePopup }) => {
   const [menuBar, setMenuBar] = useState(false);
@@ -76,19 +77,24 @@ const Navbar = ({ setActionClosePopup }) => {
         ))}
       </div>
 
-      {/* Hire Me button (always visible) */}
-      <div className="nav-button">
-        <div className="dots_border"></div>
-        <button
-          onClick={() => { setActionClosePopup(true) }}
-          className="relative px-5 py-2  font-semibold text-designColor 
-          border border-[#5D2F32] overflow-hidden group transition-all duration-300"
-        >
-          <span className="relative z-10">Hire Me</span>
-          <span className="absolute inset-0 bg-designColor scale-x-0 transition-transform duration-500 ease-out"></span>
-          <span className="absolute inset-0 border-2 border-designColor   animate-pulse opacity-50"></span>
-          <span className="absolute inset-0 bg-bodyColor group-hover:opacity-0 transition-opacity duration-500"></span>
-        </button>
+      {/* Right Actions: Theme Selector & Hire Me */}
+      <div className="flex items-center gap-2.5 sm:gap-3">
+        <ThemeSelector />
+
+        {/* Hire Me button */}
+        <div className="nav-button">
+          <div className="dots_border"></div>
+          <button
+            onClick={() => { setActionClosePopup(true) }}
+            className="relative px-4 sm:px-5 py-2 font-semibold text-designColor 
+            border border-designColor/40 overflow-hidden group transition-all duration-300 text-sm sm:text-base"
+          >
+            <span className="relative z-10">Hire Me</span>
+            <span className="absolute inset-0 bg-designColor scale-x-0 transition-transform duration-500 ease-out"></span>
+            <span className="absolute inset-0 border-2 border-designColor animate-pulse opacity-50"></span>
+            <span className="absolute inset-0 bg-bodyColor group-hover:opacity-0 transition-opacity duration-500"></span>
+          </button>
+        </div>
       </div>
 
 
