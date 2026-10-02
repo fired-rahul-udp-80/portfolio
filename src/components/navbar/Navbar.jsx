@@ -39,7 +39,7 @@ const Navbar = ({ setActionClosePopup }) => {
         className="flex items-center gap-3 cursor-pointer group select-none"
       >
         {/* Code Badge Icon */}
-        <div className="relative w-10 h-10 md:w-11 md:h-11 border border-white/20 bg-white/5 backdrop-blur-md flex items-center justify-center shadow-md shadow-black/40 group-hover:border-designColor group-hover:shadow-designColor/25 group-hover:scale-105 transition-all duration-300">
+        <div className="relative w-10 h-10 md:w-11 md:h-11 border bg-white/5 backdrop-blur-md flex items-center justify-center shadow-md border-designColor shadow-designColor/25 group-hover:scale-105 transition-all duration-300">
           <span className="font-mono font-bold text-sm md:text-base text-gray-100 group-hover:text-designColor transition-colors duration-300 tracking-tighter">
             &lt;/&gt;
           </span>

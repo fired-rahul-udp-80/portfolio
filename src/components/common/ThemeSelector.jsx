@@ -46,8 +46,7 @@ const ThemeSelector = () => {
       {/* Dropdown Menu */}
       {isOpen && (
         <div
-          className="absolute right-0 mt-3 w-64 p-3.5 rounded-2xl bg-[#0c101b]/95 backdrop-blur-xl border border-white/10 shadow-2xl shadow-black/80 z-50 animate-in fade-in zoom-in-95 duration-200"
-          style={{ minWidth: "250px" }}
+          className="absolute left-1/2 -translate-x-1/2 sm:left-auto sm:translate-x-0 sm:right-0 mt-3 w-64 max-w-[calc(100vw-24px)] p-3.5 rounded-2xl bg-[#0c101b]/95 backdrop-blur-xl border border-white/10 shadow-2xl shadow-black/80 z-50 animate-in fade-in zoom-in-95 duration-200"
         >
           {/* Header */}
           <div className="px-2 pt-1 pb-3 flex items-center justify-between border-b border-white/10 mb-2">

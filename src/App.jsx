@@ -15,7 +15,7 @@ import { AnimatePresence } from "framer-motion";
 import { featureCardData } from "./constants/index";
 import About from "./components/aboutme/About";
 import ActionPopup from "./components/ActionPopup";
-import { GridBackground, CursorHoverEffect, PageLoader } from "./components/common";
+import { GridBackground, CursorHoverEffect, PageLoader, BackgroundGradient } from "./components/common";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -25,7 +25,7 @@ function App() {
   const [videoPopup, setVideoPopup] = useState(null);
   const [popToggle, setPopToggle] = useState(false);
   const [details, setDetails] = useState([]);
-   const closepopup = () => {
+  const closepopup = () => {
     setVideoPopup(null);
     setPopToggle(false);
   };
@@ -42,30 +42,31 @@ function App() {
         <GridBackground />
         <Navbar setActionClosePopup={setActionClosePopup} />
         <div className="max-w-sreen-2xl mx-auto px-6 md:px-16 relative z-10">
+
           <Banner />
           <About />
           <Features popUp={popUp} setPopUp={setPopUp} />
-          <Project 
-          setDetails={setDetails}
-          setVideoPopup={setVideoPopup}
-          setPopToggle={setPopToggle}
+          <Project
+            setDetails={setDetails}
+            setVideoPopup={setVideoPopup}
+            setPopToggle={setPopToggle}
           />
           <Resume />
           <Testimonial />
           <Contact />
         </div>
         <Footer />
-        
+
       </div>
       <AnimatePresence>
-      {cardData && (
-        <Popup
-          closepopup={closePopup}
-          title={cardData.title}
-          desc1={cardData.desc1}
-          desc2={cardData.desc2}
-        />
-      )}
+        {cardData && (
+          <Popup
+            closepopup={closePopup}
+            title={cardData.title}
+            desc1={cardData.desc1}
+            desc2={cardData.desc2}
+          />
+        )}
       </AnimatePresence>
 
       {videoPopup && (

@@ -85,7 +85,7 @@ const Banner = () => {
                     <FaGithub />
                   </span>
                   {/* Tooltip */}
-                  <span className="absolute -top-8 left-1/2 -translate-x-[50] px-2 py-1 text-xs font-semibold text-white bg-black rounded-md opacity-0 group-hover:opacity-100 group-hover:-translate-y-2 animate-bounce transition-all duration-300">
+                  <span className="absolute -top-8 left-1/2 -translate-x-[50%] px-2 py-1 text-xs font-semibold text-white bg-black rounded-md opacity-0 group-hover:opacity-100 group-hover:-translate-y-2 animate-bounce transition-all duration-300">
                     GitHub
                   </span>
                 </div>
@@ -130,11 +130,17 @@ const Banner = () => {
               {bestSkills.map((skill, index) => (
                 <Link key={index} to={skill.link} target="_blank">
                   <div className="relative group z-20">
-                    <span className={`bannerIcon bg-[${skill.bgcolor}] text-white hover:scale-110 transition-transform duration-300`}>
+                    <span
+                      style={{ backgroundColor: skill.bgcolor }}
+                      className="bannerIcon text-white hover:scale-110 transition-transform duration-300"
+                    >
                       {skill.icon}
                     </span>
                     {/* Tooltip */}
-                    <span className="absolute -top-8 left-1/2 -translate-x-[50%] px-2 py-1 text-xs font-semibold text-white bg-black rounded-md opacity-0 group-hover:opacity-100 group-hover:-translate-y-2 animate-bounce transition-all duration-300">
+                    <span
+                      style={{ backgroundColor: skill.bgcolor }}
+                      className="absolute -top-8 left-1/2 -translate-x-[50%] px-2 py-1 text-xs font-semibold text-white rounded-md opacity-0 group-hover:opacity-100 group-hover:-translate-y-2 animate-bounce transition-all duration-300"
+                    >
                       {skill.name}
                     </span>
                   </div>
