@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Title from "../layouts/Title";
 import Education from "./Education";
 import Achievement from "./Achievement";
@@ -7,20 +7,36 @@ import Skills from "./Skills";
 import { GraduationCap, Code2, Briefcase, Award } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
+const tabs = [
+  { id: "education", label: "Education", icon: GraduationCap },
+  { id: "skills", label: "Professional Skills", icon: Code2 },
+  { id: "experience", label: "Experience", icon: Briefcase },
+  { id: "achievement", label: "Certification", icon: Award },
+];
 
 const Resume = () => {
   const [activeTab, setActiveTab] = useState("education");
-  
+  const [isHovered, setIsHovered] = useState(false);
 
-  const tabs = [
-    { id: "education", label: "Education", icon: GraduationCap },
-    { id: "skills", label: "Professional Skills", icon: Code2 },
-    { id: "experience", label: "Experience", icon: Briefcase },
-    { id: "achievement", label: "Certification", icon: Award },
-  ];
+  // Auto tab change every 3 seconds; pauses when cursor hovers over the component
+  useEffect(() => {
+    if (isHovered) return;
+
+    const interval = setInterval(() => {
+      setActiveTab((prevTab) => {
+        const currentIndex = tabs.findIndex((tab) => tab.id === prevTab);
+        const nextIndex = (currentIndex + 1) % tabs.length;
+        return tabs[nextIndex].id;
+      });
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [isHovered, activeTab]);
 
   return (
-    <section id="resume" className="w-full py-20 flex flex-col border-b-[1px] border-b-black font-bodyFont">
+    <section
+      id="resume"
+    >
       {/* Section Title */}
       <div>
         <Title title="1+ YEARS OF EXPERIENCE" des="My Resume" />
@@ -28,7 +44,7 @@ const Resume = () => {
 
       {/* Modern Theme-Aligned Tab Bar */}
       <div className="w-full max-w-4xl mx-auto mb-14">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-3 p-1.5 md:p-2 bg-[#11141c]/90 border border-white/10">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-3 p-1.5 md:p-2 bg-[#11141c]/90">
           {tabs.map((tab) => {
             const Icon = tab.icon;
             const isActive = activeTab === tab.id;
@@ -60,7 +76,10 @@ const Resume = () => {
       </div>
 
       {/* Tab Panels */}
-      <div className="w-full">
+      <div className="w-full"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      >
         
         <AnimatePresence mode="wait">
           {activeTab === "education" && (
