@@ -46,7 +46,7 @@ const Banner = () => {
   return (
     <section
       id="home"
-      className="relative w-full overflow-hidden py-6 md:py-16 flex lg:flex-row flex-col-reverse items-center border-b-[1px] gap-y-10 gap-x-10 border-b-black"
+      className="relative w-full overflow-hidden py-6 md:py-16 flex lg:flex-row flex-col-reverse items-center gap-y-10 gap-x-10"
     >
       <div className="md:w-2/3 flex flex-col gap-y-14">
         <div className="flex flex-col gap-y-5 font-titleFont ">
@@ -55,7 +55,7 @@ const Banner = () => {
           </h4>
           <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold text-white">
             Hi I'm
-            <span className="text-designColor capitalize"> Rahul Kumar</span>
+            <span className="text-designColor capitalize"> RAHUL KUMAR</span>
           </h1>
           <h2 className="text-3xl md:text-4xl font-bold text-white">
             a <span>{text}</span>

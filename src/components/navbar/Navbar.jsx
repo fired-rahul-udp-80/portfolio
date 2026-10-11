@@ -25,7 +25,7 @@ const Navbar = ({ setActionClosePopup }) => {
   return (
     <div
       className={` h-16 mx-auto flex sticky top-0 px-5 lg:px-10 z-50 justify-between border-white/10 items-center transition-all duration-300 ${scrolled
-          ? "border backdrop-blur-sm w-[95%] top-5"
+          ? "border backdrop-blur-sm w-[95%] md:w-[75%] top-5"
           : "w-full"
         }`}
     >

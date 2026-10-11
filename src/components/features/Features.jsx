@@ -66,7 +66,7 @@ const Features = ({ setPopUp }) => {
   return (
     <section
       id="services"
-      className="relative w-full h-full py-16 flex flex-col border-b border-b-black"
+      className="relative w-full h-full py-16 flex flex-col"
     >
       <Title title="Services" des="What I Do" />
 

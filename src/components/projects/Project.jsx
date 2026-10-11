@@ -13,7 +13,7 @@ const Project = ({ setDetails, setVideoPopup, setPopToggle }) => {
   const row2 = projectsList.slice(6, 12);
 
   return (
-    <section id="projects" className="w-full py-16 flex flex-col border-b border-b-black relative overflow-hidden">
+    <section id="projects" className="w-full py-16 flex flex-col relative overflow-hidden">
       {/* Ambient Theme Color Glow behind Projects */}
       <div
         className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] rounded-full blur-[140px] transition-all duration-700 -z-10 opacity-30"

@@ -7,7 +7,7 @@ export default function About() {
   
 
   const highlights = [
-    { icon: <GraduationCap className="w-4 h-4"/>, label: "B.Tech CSE", sub: "Final Year" },
+    { icon: <GraduationCap className="w-4 h-4"/>, label: "B.Tech CSE", sub: "Recent Graduated" },
     { icon: <Code2 className="w-4 h-4"/>, label: "MERN / MEAN", sub: "Full Stack" },
     { icon: <Palette className="w-4 h-4"/>, label: "UI / UX", sub: "Figma & Design" },
     { icon: <Zap className="w-4 h-4"/>, label: "70+ WPM", sub: "Typing Speed" },
